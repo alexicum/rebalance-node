@@ -1,62 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import PropTypes from 'prop-types';
+import {
+  // BrowserRouter as Router,
+  HashRouter as Router,
+  Route,
+} from 'react-router-dom';
+import {
+  SelectOperator, RechargeOperatorBalance,
+  RechargeSuccess, RechargeFailure,
+} from './pages';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: null,
-      fetching: true
-    };
-  }
+const basename = process.env.NODE_ENV === 'production'
+  // ? 'https://alexicum.github.io/rebalance'
+  ? '/'
+  : '/';
 
-  componentDidMount() {
-    fetch('/api')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`status ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(json => {
-        this.setState({
-          message: json.message,
-          fetching: false
-        });
-      }).catch(e => {
-        this.setState({
-          message: `API call failed: ${e}`,
-          fetching: false
-        });
-      })
-  }
+const RechargeRoute = ({ match }) => (
+  <div>
+    <Route exact path={`${match.url}/`} component={RechargeOperatorBalance} />
+    <Route path={`${match.url}/success`} component={RechargeSuccess} />
+    <Route path={`${match.url}/failure`} component={RechargeFailure} />
+  </div>
+);
+
+RechargeRoute.propTypes = {
+  match: PropTypes.shape({}).isRequired,
+};
+
+export default class App extends Component {
+  state = {
+    name: 'Rebalance',
+  };
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <p className="App-intro">
-          {this.state.fetching
-            ? 'Fetching message from API'
-            : this.state.message}
-          </p>
-        </header>
+        <h1>{this.state.name}</h1>
+        <Router basename={basename}>
+          <div>
+            <Route exact path="/" component={SelectOperator} />
+            <Route path="/recharge" component={RechargeRoute} />
+          </div>
+        </Router>
       </div>
     );
   }
 }
-
-export default App;

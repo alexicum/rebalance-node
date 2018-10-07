@@ -1,0 +1,7 @@
+:root {
+  --currencySymbol: '\20BD';
+}
+
+.rechargeOperator-amount::after {
+  content: ' ' + var(--currencySymbol);
+}
