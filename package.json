@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "create-react-app + Node API on Heroku",
   "engines": {
-    "node": "8.12.x"
+    "node": "10.11.x"
   },
   "scripts": {
     "start": "node --experimental-modules server/index.mjs",
