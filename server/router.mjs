@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import wrap from './utils/expressUtils';
+import wrap from './utils/expressUtils.mjs';
 
-import operators from './fakeData';
-import * as validations from './utils/validations';
+import operators from './fakeData.mjs';
+import * as validations from './utils/validations.mjs';
 
 // const DEBUG = !(process.env.NODE_ENV === 'production');
 
