@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "create-react-app + Node API on Heroku",
   "engines": {
-    "node": "8.11.x"
+    "node": "8.12.x"
   },
   "scripts": {
-    "start": "node server",
+    "start": "node --experimental-modules server/index.mjs",
     "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "cacheDirectories": [
