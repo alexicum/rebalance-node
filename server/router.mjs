@@ -5,8 +5,6 @@ import wrap from './utils/expressUtils.mjs';
 import operators from './fakeData.mjs';
 import * as validations from './utils/validations.mjs';
 
-// const DEBUG = !(process.env.NODE_ENV === 'production');
-
 const router = new express.Router();
 
 // for parsing application/json
@@ -25,7 +23,7 @@ router.get('/operators', wrap(async (req, res) => res.send({ operators })));
  *   reply with operator or error
  */
 router.post('/operators', wrap(async (req, res) => {
-  const { name } = JSON.parse(req.body);
+  const { name } = req.body;
 
   const error = validations.isAlpha(name);
   if (error) {
