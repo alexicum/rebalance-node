@@ -20,6 +20,9 @@ Develop (HTML/CSS-coding and implement client-side logic) application interface 
 
 # Project description
 
+- github: https://github.com/alexicum/rebalance-node
+- heroku live app: https://rebalance-node.herokuapp.com
+
 ### Libs & conceptions
 - cra - React project builder;
 - github for hosting sources

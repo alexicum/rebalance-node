@@ -1,5 +1,5 @@
 {
-  "name": "cra-rest-node",
+  "name": "rebalance-node",
   "version": "1.0.0",
   "description": "create-react-app + Node API on Heroku",
   "engines": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github:alexicum/cra-rest-node"
+    "url": "github:alexicum/rebalance-node"
   },
   "keywords": [
     "node",
